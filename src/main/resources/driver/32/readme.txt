@@ -1,0 +1,1 @@
+Download 32 bit chrome and ie driver in this folder
