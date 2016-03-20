@@ -22,13 +22,13 @@ A full Cucumber flow is comprised of 3 components: **feature file**, **steps fil
 ##Feature file:
 An example of a feature file with one scenario looks like this:
 ```
-**Feature**: Namely New Functionality
-**Background:**
+Feature: Namely New Functionality
+Background:
 Given I Browse to the application
 When User login as a valid user
 Then Namely home page should display
     
-**Scenario:** 1. Logout after successfull login
+Scenario: 1. Logout after successfull login
 When User logout from the application
 Then Namely login page should show
 ```
@@ -54,20 +54,15 @@ we can use **@Autowired** annotation to build something like a data container ob
 	protected LoginPage loginPage;
 ```
 ##Config Example:
-We can also initialize our classes based on our custome annotation
+We can also initialize our classes based on our custom annotation
 
-Here, we initialized @PageObject annotation by overriding two methods. 
+Here, we initialized @PageObject annotation by overriding postProcessBeforeInitialization methods. 
 ```
 	 @Override
 	 public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 	  if (bean.getClass().isAnnotationPresent(PageObject.class)) {
 	   PageFactory.initElements(driver, bean);
 	  }
-	  return bean;
-	 }
-	 
-	 @Override
-	 public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 	  return bean;
 	 }
 ```
